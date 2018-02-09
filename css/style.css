@@ -1,0 +1,9 @@
+
+body{
+	background-color: lightgrey;
+}
+
+#chart1{
+	width: 600px; 
+	height: 400px;
+}
