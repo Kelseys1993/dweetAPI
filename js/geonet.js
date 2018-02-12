@@ -10,29 +10,28 @@ $.ajax({
 	success: function(data){
    
 		if(data.type == "FeatureCollection"){
- console.log(data.features)
-		var depth = [];
-    var magnitude = [];
-	for (var i = 0; i < data.features.length; i++) {
-      depth.push(data.features[i].properties.depth);            
-      magnitude.push(data.features[i].properties.magnitude);  
+ console.log(data)
+	// 	var depth = [];
+ //    var magnitude = [];
+	// for (var i = 0; i < data.features.length; i++) {
+ //      depth.push(data.features[i].properties.depth);            
+ //      magnitude.push(data.features[i].properties.magnitude);  
 
          
  
  };
-  console.log(depth)
-  console.log(magnitude)
+  // console.log(depth)
+  // console.log(magnitude)
   var data = new google.visualization.DataTable();
   	data.addColumn('number', 'Depth');
     data.addColumn('number', 'Magnitude');
 
     
 
-  // for (var i =0; i < depth; i++) {
-  //     data.addRow([depth,
-  //            magnitude,
-  //     ]);
-  // };
+  for (var i =0; i < data.features; i++) {
+      data.addRow([data.features[i].properties.depth, 
+        data.features[i].properties.magnitude]);
+  };
 
 
     var options = {
@@ -47,9 +46,9 @@ $.ajax({
       chart.draw(data, options);
   
 
-	   }else{
-     $('#chart1').empty().append("<h2>Cannot get data from Geonet</h2>");
-     }
+	   // }else {
+    //  $('#chart1').empty().append("<h2>Cannot get data from Geonet</h2>");
+    //  }
 
 		      
 
@@ -57,7 +56,7 @@ $.ajax({
 	error: function(error){
 console.log('cant get data')
 	}
-})
+});
 
 }
 
